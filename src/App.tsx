@@ -1,4 +1,5 @@
 import { Header, Content } from './components'
+import { Cart } from './pages/Cart'
 import './scss/app.scss'
 import { AppContainer, Container } from './styles'
 
@@ -7,7 +8,8 @@ const App = () => {
     <AppContainer>
       <Container>
         <Header />
-        <Content />
+        {/* <Content />  */}
+        <Cart />
       </Container>
     </AppContainer>
   )
