@@ -1,6 +1,2 @@
 export { default as Header } from './Header'
 export { default as Content } from './Content'
-export { default as AddButtonLogo } from './AddButtonLogo'
-export { default as SubButtonLogo } from './SubButtonLogo'
-export { default as RemoveButtonLogo } from './RemoveButtonLogo'
-export { default as CartLogo } from './CartLogo'

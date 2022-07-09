@@ -16,6 +16,14 @@ export const RemoveButtonWrapper = styled.div`
   min-width: 32px;
   padding: 0;
 
+  svg {
+    transform: rotate(45deg);
+
+    path {
+      fill: #2a2a2a;
+    }
+  }
+
   &:hover {
     background: #2a2a2a;
     border: 2px solid #2a2a2a;
