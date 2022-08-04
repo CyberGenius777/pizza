@@ -1,0 +1,6 @@
+export { default as AddButtonLogo } from './AddButtonLogo'
+export { default as SubButtonLogo } from './SubButtonLogo'
+export { default as RemoveButtonLogo } from './RemoveButtonLogo'
+export { default as CartLogo } from './CartLogo'
+export { default as GargageLogo } from './GarbageLogo'
+export { default as ArrowBackLogo } from './ArrowBackLogo'
