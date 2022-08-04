@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { IPizzaDTO } from '../../../types/pizza'
 import {
   ButtonText,
   AddButtonWrapper,
@@ -10,29 +12,57 @@ import {
   PizzaName,
   PizzaPrice,
 } from './styles'
+import { SizesEnum, TypesEnum } from './types'
 
-const PizzaItem = () => {
+const PizzaItem: React.FC<IPizzaDTO> = ({
+  id,
+  imageUrl,
+  title,
+  types,
+  sizes,
+  price,
+  category,
+  rating,
+}) => {
+  const [activeType, setActiveType] = useState<number>(0)
+  const [activeSize, setActiveSize] = useState<number>(0)
+
+  const onChangePizzaType = (currentType: number) => () => {
+    setActiveType(currentType)
+  }
+
+  const onChangePizzaSize = (currentSize: number) => () => {
+    setActiveSize(currentSize)
+  }
+
   return (
     <PizzaItemWrapper>
-      <img
-        className='pizza-block__image'
-        src='https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg'
-        alt='Pizza'
-      />
-      <PizzaName>Чизбургер-пицца</PizzaName>
+      <img className='pizza-block__image' src={imageUrl} alt={title} />
+      <PizzaName>{title}</PizzaName>
       <ChoosePizzaContainer>
         <OrderWrapper>
-          <OrderList className='active'>тонкое</OrderList>
-          <OrderList>традиционное</OrderList>
+          {types.map((currentType: number) => (
+            <OrderList
+              key={currentType}
+              onClick={onChangePizzaType(currentType)}
+              active={activeType === currentType}>
+              {TypesEnum[currentType]}
+            </OrderList>
+          ))}
         </OrderWrapper>
         <OrderWrapper>
-          <OrderList className='active'>26 см.</OrderList>
-          <OrderList>30 см.</OrderList>
-          <OrderList>40 см.</OrderList>
+          {sizes.map((currentSize: number, index: number) => (
+            <OrderList
+              key={currentSize}
+              onClick={onChangePizzaSize(index)}
+              active={activeSize === index}>
+              {SizesEnum[currentSize]}
+            </OrderList>
+          ))}
         </OrderWrapper>
       </ChoosePizzaContainer>
       <InfoContainer>
-        <PizzaPrice>от 395 ₽</PizzaPrice>
+        <PizzaPrice>{price} ₽</PizzaPrice>
         <AddButtonWrapper>
           <svg
             width='12'

@@ -2,8 +2,9 @@ import { Menu } from './Menu'
 import { PizzaItem } from './PizzaItem'
 import { Sort } from './Sort'
 import { ContentTitle, ContentWrapper, Section } from './styles'
+import { IPizzaDTO } from '../../types/pizza'
 
-const Content = () => {
+const Content: React.FC<{ pizzas: IPizzaDTO[] }> = ({ pizzas }) => {
   return (
     <ContentWrapper>
       <Section>
@@ -12,14 +13,9 @@ const Content = () => {
       </Section>
       <ContentTitle>Все пиццы</ContentTitle>
       <Section>
-        <PizzaItem />
-        <PizzaItem />
-        <PizzaItem />
-        <PizzaItem />
-        <PizzaItem />
-        <PizzaItem />
-        <PizzaItem />
-        <PizzaItem />
+        {pizzas.length > 0
+          ? pizzas.map((pizza: IPizzaDTO) => <PizzaItem key={pizza.id} {...pizza} />)
+          : 'Скоро здесь добавятся пиццы!'}
       </Section>
     </ContentWrapper>
   )

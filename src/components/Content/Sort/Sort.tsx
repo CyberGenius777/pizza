@@ -1,9 +1,24 @@
+import { useState } from 'react'
 import { SortLabel, SortOrderList, SortOrderWrapper, SortPopUp, SortWrapper } from './styles'
 
+const sortType = ['популярности', 'цене', 'алфавиту']
+
 const Sort = () => {
+  const [open, setOpen] = useState<boolean>(false)
+  const [currentSort, setCurrentSort] = useState(0)
+
+  const onOpenPopUpHandler = () => {
+    setOpen(!open)
+  }
+
+  const onChangeSortType = (currentSortTypeId: number) => () => {
+    setCurrentSort(currentSortTypeId)
+    setOpen(false)
+  }
+
   return (
     <SortWrapper>
-      <SortLabel>
+      <SortLabel isOpen={open}>
         <svg
           width='10'
           height='6'
@@ -16,15 +31,22 @@ const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span>популярности</span>
+        <span onClick={onOpenPopUpHandler}>{sortType[currentSort]}</span>
       </SortLabel>
-      <SortPopUp>
-        <SortOrderWrapper>
-          <SortOrderList className='active'>популярности</SortOrderList>
-          <SortOrderList>цене</SortOrderList>
-          <SortOrderList>алфавиту</SortOrderList>
-        </SortOrderWrapper>
-      </SortPopUp>
+      {open && (
+        <SortPopUp>
+          <SortOrderWrapper>
+            {sortType.map((sort, index) => (
+              <SortOrderList
+                key={index}
+                onClick={onChangeSortType(index)}
+                active={currentSort === index}>
+                {sort}
+              </SortOrderList>
+            ))}
+          </SortOrderWrapper>
+        </SortPopUp>
+      )}
     </SortWrapper>
   )
 }

@@ -1,15 +1,16 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const SortWrapper = styled.div`
   position: relative;
 `
 
-export const SortLabel = styled.div`
+export const SortLabel = styled.div<{ isOpen: boolean }>`
   display: flex;
   align-items: center;
 
   svg {
     margin-right: 8px;
+    transform: ${({ isOpen }) => isOpen && 'rotate(180deg)'};
   }
 
   b {
@@ -38,17 +39,20 @@ export const SortOrderWrapper = styled.ul`
   overflow: hidden;
 `
 
-export const SortOrderList = styled.li`
+export const SortOrderList = styled.li<{ active?: boolean }>`
   padding: 12px 20px;
   cursor: pointer;
-
+  
   &.active,
   &:hover {
     background: rgba(254, 95, 30, 0.05);
   }
-
-  &.active {
-    font-weight: bold;
-    color: #fe5f1e;
+  ${({ active }) =>
+    active &&
+    css`
+      font-weight: bold;
+      color: #fe5f1e;
+    `}
+  
   }
 `

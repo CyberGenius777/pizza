@@ -13,6 +13,7 @@ export const HeaderContainer = styled.div`
 
 export const LogoContainer = styled.div`
   display: flex;
+  cursor: pointer;
 `
 
 export const HeaderTitleWrapper = styled.div`
@@ -33,35 +34,35 @@ export const HeaderCartContainer = styled.div``
 
 export const CartLink = styled.a`
   align-items: center;
-  background-color: $orange;
+  background-color: #fe5f1e;
   border-radius: 30px;
   border: 1px solid transparent;
-  color: #fff;
   cursor: pointer;
   display: flex;
-  import $duration;
   line-height: 23px;
   min-width: 100px;
   padding: 12px 25px;
   text-align: center;
-  transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
   user-select: none;
 
   &:hover {
-    background-color: darken($orange, 8%);
+    background-color: #f24701;
   }
   &:active {
-    background-color: darken($orange, 12%);
+    background-color: #f24701;
     transform: translateY(1px);
   }
- 
+
   & svg {
     margin-right: 8px;
     margin-bottom: 1px;
   }
 `
 
-export const CartPrice = styled.span``
+export const CartPrice = styled.span`
+  color: #fff;
+`
 
 export const HeaderCartDelimiter = styled.div`
   width: 1px;
@@ -72,6 +73,7 @@ export const HeaderCartDelimiter = styled.div`
 `
 
 export const CartGoodsAmount = styled.span`
+  color: #fff;
   font-weight: 600;
   font-size: 16px;
 `

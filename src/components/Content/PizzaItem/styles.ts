@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const PizzaItemWrapper = styled.div`
   width: 280px;
@@ -38,19 +38,21 @@ export const OrderWrapper = styled.ul`
   }
 `
 
-export const OrderList = styled.li`
+export const OrderList = styled.li<{ active?: boolean }>`
   padding: 8px;
   flex: 1;
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
   user-select: none;
-  &.active {
-    background: #ffffff;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
-    border-radius: 5px;
-    cursor: auto;
-  }
+  ${({ active }) =>
+    active &&
+    css`
+      background: #ffffff;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+      border-radius: 5px;
+      cursor: auto;
+    `}
 `
 
 export const InfoContainer = styled.div`

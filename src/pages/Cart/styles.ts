@@ -23,7 +23,8 @@ export const CartTop = styled.div`
 export const Title = styled.h2`
   display: flex;
   align-items: center;
-  font-size: 32px;
+  font-size: 24px;
+  text-transform: uppercase;
 
   svg {
     position: relative;
@@ -33,7 +34,7 @@ export const Title = styled.h2`
     margin-right: 10px;
     path {
       stroke: #232323;
-      stroke-width: 1.9;
+      strokewidth: 1.9;
     }
   }
 `
@@ -166,7 +167,7 @@ export const BackButton = styled.a`
     margin-right: 12px;
     path {
       fill: transparent;
-      stroke-width: 2;
+      strokewidth: 2;
     }
   }
 
@@ -205,7 +206,7 @@ export const PayNowButtonWrapper = styled.button`
     background-color: #f24701;
   }
   &:active {
-    background-color: darken(#fe5f1e, 12%);
+    background-color: #f24701;
     transform: translateY(1px);
   }
 
