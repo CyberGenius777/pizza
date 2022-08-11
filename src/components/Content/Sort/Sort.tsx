@@ -1,18 +1,27 @@
 import { useState } from 'react'
 import { SortLabel, SortOrderList, SortOrderWrapper, SortPopUp, SortWrapper } from './styles'
+import { ISortTypes } from './types'
 
-const sortType = ['популярности', 'цене', 'алфавиту']
+interface ISortProps {
+  currentSort: ISortTypes
+  onChangeSort: (value: ISortTypes) => void
+}
 
-const Sort = () => {
+const sortType = [
+  { name: 'rating', sortValue: 'популярности' },
+  { name: 'price', sortValue: 'цене' },
+  { name: 'title', sortValue: 'алфавиту' },
+]
+
+const Sort: React.FC<ISortProps> = ({ currentSort, onChangeSort }) => {
   const [open, setOpen] = useState<boolean>(false)
-  const [currentSort, setCurrentSort] = useState(0)
 
   const onOpenPopUpHandler = () => {
     setOpen(!open)
   }
 
-  const onChangeSortType = (currentSortTypeId: number) => () => {
-    setCurrentSort(currentSortTypeId)
+  const onChangeSortType = (currentSortType: ISortTypes) => () => {
+    onChangeSort(currentSortType)
     setOpen(false)
   }
 
@@ -31,17 +40,17 @@ const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={onOpenPopUpHandler}>{sortType[currentSort]}</span>
+        <span onClick={onOpenPopUpHandler}>{currentSort.sortValue}</span>
       </SortLabel>
       {open && (
         <SortPopUp>
           <SortOrderWrapper>
-            {sortType.map((sort, index) => (
+            {sortType.map((sortObj: ISortTypes, index) => (
               <SortOrderList
                 key={index}
-                onClick={onChangeSortType(index)}
-                active={currentSort === index}>
-                {sort}
+                onClick={onChangeSortType(sortObj)}
+                active={currentSort.name === sortType[index].name}>
+                {sortObj.sortValue}
               </SortOrderList>
             ))}
           </SortOrderWrapper>

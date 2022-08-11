@@ -10,6 +10,13 @@ export const Section = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
 `
+
+export const PizzaSection = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`
+
 export const ContentTitle = styled.h2`
   margin: 35px 0;
 `

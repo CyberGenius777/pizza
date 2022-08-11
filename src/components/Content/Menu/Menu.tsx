@@ -1,19 +1,20 @@
-import { useState } from 'react'
 import { Categories, MenuOrderWrapper, MenuOrderList } from './styles'
 
-const MenuList = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
+interface IMenuProps {
+  menuList: string[]
+  activeMenuTab: number
+  onChangeCategory: (value: number) => void
+}
 
-const Menu = () => {
-  const [activeMenuTab, setActiveMenuTab] = useState(0)
-
-  const onChangeMenuTabHandler = (currentId: number) => () => {
-    setActiveMenuTab(currentId)
+const Menu: React.FC<IMenuProps> = ({ menuList, activeMenuTab, onChangeCategory }) => {
+  const onChangeMenuTabHandler = (currentTabIndex: number) => () => {
+    onChangeCategory(currentTabIndex)
   }
 
   return (
     <Categories>
       <MenuOrderWrapper>
-        {MenuList.map((menuItem: string, index: number) => (
+        {menuList.map((menuItem: string, index: number) => (
           <MenuOrderList
             key={index}
             active={activeMenuTab === index}

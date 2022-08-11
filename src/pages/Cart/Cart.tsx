@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router'
-import { Header } from '../../components'
 import { LogoContainer, HeaderTitleWrapper } from '../../components/Header/styles'
 import { PizzaLogo } from '../../components/PizzaLogo'
 import {

@@ -1,8 +1,7 @@
 import { Route, Routes } from 'react-router'
-import { Cart } from './pages/Cart'
+import Cart from './pages/Cart/Cart'
 import { Home } from './pages/Home'
 import { NotFound } from './pages/NotFound'
-// import './scss/app.scss'
 import { AppContainer, Container } from './styles'
 
 const App = () => {
